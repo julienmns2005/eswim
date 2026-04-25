@@ -357,7 +357,7 @@ const About = ({ navigate }) => (
 
       <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div>
-          <img src="https://images.unsplash.com/photo-1550517558-8120b08053ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Julien Moens au bord du bassin" className="rounded-2xl shadow-xl" />
+          <img src="/julien.jpg" alt="Julien Moens au bord du bassin" className="rounded-2xl shadow-xl" />
         </div>
         <div className="space-y-6 text-slate-600 leading-relaxed text-lg">
           <h3 className="text-2xl font-bold text-slate-900">Je m'appelle Julien Moens.</h3>
@@ -916,8 +916,8 @@ const Admin = ({ navigate }) => {
 
         {publishStatus && (
           <div className={`p-4 rounded-lg font-medium text-sm text-center animate-fade-in ${publishStatus.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' :
-              publishStatus.type === 'loading' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
-                'bg-red-50 text-red-700 border border-red-200'
+            publishStatus.type === 'loading' ? 'bg-blue-50 text-blue-700 border border-blue-200' :
+              'bg-red-50 text-red-700 border border-red-200'
             }`}>
             {publishStatus.type === 'success' && <CheckCircle className="w-5 h-5 inline-block mr-2" />}
             {publishStatus.text}
