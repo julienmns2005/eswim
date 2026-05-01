@@ -85,6 +85,19 @@ const PressCard = ({ date, title, description, badge, image, source }) => (
   </div>
 );
 
+const EswimLogo = ({ className = "w-10 h-10" }) => (
+  <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <mask id="swooshMask">
+        <rect x="0" y="0" width="100" height="100" fill="white" />
+        <path d="M 2 48 C 20 37, 45 41, 54 44.5 A 8.5 8.5 0 1 1 54 55.5 C 45 55, 25 56, 2 48 Z" fill="black" stroke="black" stroke-width="5" stroke-linejoin="round" />
+      </mask>
+    </defs>
+    <path d="M 30 15 L 70 15 A 12.5 12.5 0 0 1 70 40 L 50 40 L 50 60 L 70 60 A 12.5 12.5 0 0 1 70 85 L 30 85 A 5 5 0 0 1 25 80 L 25 20 A 5 5 0 0 1 30 15 Z" fill="currentColor" mask="url(#swooshMask)" />
+    <path d="M 2 48 C 20 37, 45 41, 54 44.5 A 8.5 8.5 0 1 1 54 55.5 C 45 55, 25 56, 2 48 Z" fill="currentColor" />
+  </svg>
+);
+
 // --- PAGES ---
 
 const Home = ({ navigate }) => (
@@ -190,47 +203,47 @@ const Home = ({ navigate }) => (
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
           subtitle="L'Offre"
-          title="Le Pack Analyse Biomécanique & Correction"
+          title="Une offre simple pour progresser vite et durablement"
         />
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
           <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
             <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
               <Video className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">1. Analyse vidéo détaillée</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">1. Le Protocole (6 semaines)</h3>
             <p className="text-slate-700 text-base leading-relaxed">
-              Vous vous filmez, j'analyse votre nage au ralenti avec des tracés. J'identifie vos freins : alignement, respiration, prise d'appui, coordination et efficacité propulsive.
+              Le coeur de l'accompagnement : un bilan clair de votre nage, un plan précis sur 6 semaines, un suivi chaque semaine et un contact direct WhatsApp.
             </p>
           </div>
 
           <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
             <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-              <FileText className="w-7 h-7" />
+              <Activity className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">2. Fiche bilan PDF</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">2. L'Immersion "Sur le Terrain"</h3>
             <p className="text-slate-700 text-base leading-relaxed">
-              Un document clair, synthétique et visuel résumant les défauts observés, les priorités de correction et les points-clés à retenir avant chaque séance.
+              L'option premium : je viens au bord du bassin pour vous corriger en direct et vous faire progresser plus vite.
             </p>
           </div>
 
           <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden group">
             <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-              <Calendar className="w-7 h-7" />
+              <Target className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">3. Plan sur 4 semaines</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">3. Le Cercle de Continuité</h3>
             <p className="text-slate-700 text-base leading-relaxed">
-              Un programme précis avec éducatifs, exercices ciblés et logique de progression pour automatiser une nage plus efficace et détruire vos anciens défauts.
+              Le suivi long terme : un abonnement mensuel pour continuer à progresser après les 6 semaines.
             </p>
           </div>
         </div>
 
         <div className="text-center bg-slate-900 text-white rounded-2xl p-10 max-w-3xl mx-auto shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-          <h3 className="text-3xl font-bold mb-6 relative z-10">Prêt à transformer votre nage ?</h3>
-          <p className="text-slate-300 mb-10 text-sm relative z-10">Réservez dès maintenant votre appel découverte offert pour que nous discutions de vos objectifs.</p>
+          <h3 className="text-3xl font-bold mb-6 relative z-10">Prêt à améliorer votre nage ?</h3>
+          <p className="text-slate-300 mb-10 text-sm relative z-10">Prenons quelques minutes pour faire le point sur votre niveau actuel, vos objectifs et les leviers concrets à activer. Vous repartez avec une vision claire de la meilleure stratégie pour progresser rapidement et durablement.</p>
           <Button onClick={() => navigate('contact')} className="w-full sm:w-auto text-lg px-10 py-4 relative z-10">
-            Obtenir le guide & réserver ma visio
+            Parlons-en
           </Button>
         </div>
       </div>
@@ -469,48 +482,48 @@ const About = ({ navigate }) => (
 const Service = ({ navigate }) => (
   <div className="animate-fade-in pt-24 pb-20">
     <div className="max-w-7xl mx-auto px-6">
-      <SectionHeading subtitle="Détail de l'offre" title="L'Analyse Biomécanique Complète" />
+      <SectionHeading subtitle="Détail de l'offre" title="Le programme principal" />
 
       {/* Contenu principal */}
       <div className="grid lg:grid-cols-3 gap-12 mb-20">
         <div className="lg:col-span-2 space-y-12">
           <section>
             <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-              <Video className="text-blue-600" /> Ce que comprend le retour vidéo
+              <Video className="text-blue-600" /> Bilan de départ + plan d'action
             </h3>
             <p className="text-slate-600 leading-relaxed mb-4">
-              Je vous renvoie votre propre vidéo, éditée et commentée de vive voix. J'y ajoute des arrêts sur image, des ralentis et des tracés graphiques (lignes d'alignement, angles d'attaque, vecteurs de force) pour vous montrer très concrètement ce qui se passe sous l'eau.
+              On commence par un appel pour fixer votre objectif, puis j'analyse votre nage en vidéo pour repérer ce qui vous freine.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              La différence avec une simple vidéo YouTube ? Ici, on parle de <strong>votre</strong> corps, de <strong>vos</strong> défauts et de la manière dont <strong>vos</strong> segments interagissent.
+              Vous repartez avec des corrections simples, adaptées à <strong>votre</strong> niveau et applicables dès la séance suivante.
             </p>
           </section>
 
           <section>
             <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-              <FileText className="text-blue-600" /> Le Bilan PDF et le Plan
+              <FileText className="text-blue-600" /> Suivi clair semaine après semaine
             </h3>
             <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
-                    <strong className="block text-slate-900">Diagnostic précis</strong>
-                    <span className="text-sm text-slate-600">Liste hiérarchisée des 3 défauts majeurs à corriger en priorité.</span>
+                    <strong className="block text-slate-900">Plan de 6 semaines personnalisé</strong>
+                    <span className="text-sm text-slate-600">Vous savez exactement quoi nager, comment le faire, et dans quel ordre progresser.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
-                    <strong className="block text-slate-900">Plan de 4 semaines</strong>
-                    <span className="text-sm text-slate-600">4 blocs d'entraînement spécifiques avec des éducatifs détaillés pour reprogrammer votre schéma moteur.</span>
+                    <strong className="block text-slate-900">Tableau de suivi simple</strong>
+                    <span className="text-sm text-slate-600">Vous suivez vos séances et vos progrès facilement, même depuis votre téléphone.</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
                   <div>
-                    <strong className="block text-slate-900">Points de focus</strong>
-                    <span className="text-sm text-slate-600">Les sensations clés à rechercher lors de vos prochaines séances.</span>
+                    <strong className="block text-slate-900">Point chaque semaine</strong>
+                    <span className="text-sm text-slate-600">On ajuste le plan ensemble pour garder le rythme et continuer à avancer.</span>
                   </div>
                 </li>
               </ul>
@@ -520,7 +533,7 @@ const Service = ({ navigate }) => (
           <section>
             <h3 className="text-2xl font-bold text-slate-900 mb-6">Pourquoi ça fonctionne ?</h3>
             <p className="text-slate-600 leading-relaxed">
-              Le nageur ne repart pas seulement avec un diagnostic froid ("ton coude est trop bas"), mais avec une <strong>méthode concrète</strong> pour corriger le problème. Je vous explique le "pourquoi" et je vous donne le "comment". C'est cette pédagogie couplée à un plan d'action qui crée de vrais résultats sur le chronomètre.
+              Parce que vous êtes guidé du début à la fin : un plan clair, un point chaque semaine et une réponse rapide sur WhatsApp quand vous avez un doute.
             </p>
           </section>
         </div>
@@ -529,20 +542,20 @@ const Service = ({ navigate }) => (
         <div className="lg:col-span-1">
           <div className="sticky top-32 bg-white rounded-2xl shadow-xl border border-slate-100 p-8">
             <h3 className="text-xl font-bold text-slate-900 mb-2">L'Accompagnement</h3>
-            <p className="text-slate-500 text-sm mb-6">Déroulement de l'analyse premium à distance</p>
+            <p className="text-slate-500 text-sm mb-6">Un accompagnement complet sur 6 semaines, simple et concret</p>
 
-            <div className="text-2xl font-bold text-blue-600 mb-6">Appel Découverte<br />Offert (15 min)</div>
+            <div className="text-2xl font-bold text-blue-600 mb-6">Appel de départ<br />+ suivi hebdomadaire</div>
 
             <ul className="space-y-3 mb-8 text-sm text-slate-600">
-              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Echange visio offert</li>
-              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Guide de captation fourni</li>
-              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Analyse biomécanique complète</li>
-              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Fiche Bilan PDF</li>
-              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Plan correctif 4 semaines</li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Analyse vidéo de votre nage</li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Plan personnalisé sur 6 semaines</li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Tableau de suivi simple</li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Point hebdomadaire</li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Ligne directe WhatsApp</li>
             </ul>
 
-            <Button onClick={() => navigate('contact')} variant="accent" className="w-full mb-4 text-slate-950 font-bold">Réserver mon appel</Button>
-            <p className="text-sm font-medium text-center text-slate-500 mt-4">Entièrement sans engagement.</p>
+            <Button onClick={() => navigate('contact')} variant="accent" className="w-full mb-4 text-slate-950 font-bold">Parlons-en</Button>
+            <p className="text-sm font-medium text-center text-slate-500 mt-4">L'objectif est simple : vous aider à gagner en vitesse, en aisance et en régularité, avec un accompagnement clair, humain et structuré.</p>
           </div>
         </div>
       </div>
@@ -995,7 +1008,7 @@ const ArticleDetail = ({ navigate, id }) => {
           <p className="text-slate-400 text-sm mt-6 font-medium">Publié le {new Date(article.created_at).toLocaleDateString()}</p>
         </div>
         {article.image && (
-          <div className="mb-14 rounded-3xl overflow-hidden shadow-lg h-[400px]">
+          <div className="mb-14 rounded-3xl overflow-hidden shadow-lg h-64 md:h-[400px]">
             <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
           </div>
         )}
@@ -1020,6 +1033,13 @@ export default function App() {
     setIsMobileMenuOpen(false);
   }, [currentPage]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { id: 'home', label: 'Accueil' },
     { id: 'about', label: 'Mon Expertise' },
@@ -1035,17 +1055,15 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
           {/* Logo */}
-          <div
-            className="flex items-center gap-2 cursor-pointer group"
+          <button
+            type="button"
+            className="cursor-pointer flex items-center gap-2 sm:gap-3 group"
             onClick={() => setCurrentPage('home')}
+            aria-label="Retour à l'accueil"
           >
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
-              <Activity className="text-white w-5 h-5" />
-            </div>
-            <span className="font-bold text-xl tracking-tight text-white">
-              E<span className="text-blue-500 font-black">swim</span>
-            </span>
-          </div>
+            <EswimLogo className="w-10 h-10 sm:w-12 sm:h-12 text-blue-500 group-hover:text-cyan-400 transition-colors" />
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-white">ESWIM<span className="text-blue-500">.</span></span>
+          </button>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
@@ -1072,8 +1090,9 @@ export default function App() {
             </Button>
 
             <button
-              className="md:hidden p-2 text-white"
+              className="md:hidden p-2 text-white rounded-lg border border-slate-700 bg-slate-900/60"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             >
               {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
@@ -1082,13 +1101,20 @@ export default function App() {
 
         {/* Mobile Nav */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-950 border-b border-slate-800 p-4 animate-fade-in shadow-2xl absolute w-full text-white">
-            <div className="flex flex-col space-y-4">
+          <>
+            <button
+              type="button"
+              className="md:hidden fixed inset-0 top-20 bg-black/55 z-40"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Fermer le menu mobile"
+            />
+            <div className="md:hidden fixed top-20 left-0 right-0 z-50 bg-slate-950 border-b border-slate-800 p-4 animate-fade-in shadow-2xl text-white max-h-[calc(100vh-5rem)] overflow-y-auto">
+              <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => setCurrentPage(link.id)}
-                  className={`text-left text-lg font-medium p-2 rounded-lg ${currentPage === link.id ? 'text-blue-600 bg-blue-50' : 'text-slate-600'
+                  className={`text-left text-base font-semibold px-3 py-3 rounded-lg transition-colors ${currentPage === link.id ? 'text-slate-950 bg-cyan-400' : 'text-slate-100 bg-slate-900 hover:bg-slate-800'
                     }`}
                 >
                   {link.label}
@@ -1096,12 +1122,13 @@ export default function App() {
               ))}
               <Button
                 onClick={() => setCurrentPage('contact')}
-                className="w-full mt-4 py-3"
+                className="w-full mt-3 py-3"
               >
-                Réserver mon analyse
+                Parlons-en
               </Button>
             </div>
-          </div>
+            </div>
+          </>
         )}
       </header>
 
@@ -1121,11 +1148,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8">
 
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
-                <Activity className="text-white w-4 h-4" />
-              </div>
-              <span className="font-bold text-lg text-white tracking-tight">Eswim</span>
+            <div className="mb-6 flex items-center gap-3">
+              <EswimLogo className="w-12 h-12 text-blue-500" />
+              <span className="text-2xl font-black tracking-tight text-white">ESWIM<span className="text-blue-500">.</span></span>
             </div>
             <p className="text-sm leading-relaxed mb-6">
               L'expertise biomécanique pour les nageurs exigeants. Transformez votre technique, explosez vos chronos.
