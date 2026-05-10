@@ -1076,7 +1076,7 @@ export default function App() {
             <Button
               onClick={() => setCurrentPage('contact')}
               variant="primary"
-              className="hidden md:flex text-sm py-2.5 px-5"
+              className="hidden lg:flex text-sm py-2.5 px-5"
             >
               Réserver mon analyse
             </Button>
