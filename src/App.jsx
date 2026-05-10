@@ -559,7 +559,7 @@ const Blog = ({ navigate }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/articles')
+    fetch('/api/articles')
       .then(res => res.json())
       .then(data => {
         setArticles(Array.isArray(data) ? data : []);
@@ -645,7 +645,7 @@ const Contact = ({ navigate }) => {
 
     /* FIXME: À décommenter pour remettre la vraie API backend
     try {
-      const res = await fetch('http://localhost:3001/api/reservation', {
+      const res = await fetch('/api/reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -810,7 +810,7 @@ const Admin = ({ navigate }) => {
 
   const fetchArticles = () => {
     // Adding a timestamp ensures the browser doesn't cache the API response!
-    fetch(`http://localhost:3001/api/articles?t=${new Date().getTime()}`)
+    fetch(`/api/articles?t=${new Date().getTime()}`)
       .then(res => res.json())
       .then(data => setArticles(Array.isArray(data) ? data : []))
       .catch(err => console.error(err));
@@ -830,7 +830,7 @@ const Admin = ({ navigate }) => {
     e.preventDefault();
     setPublishStatus({ type: 'loading', text: 'Publication en cours...' });
     try {
-      const res = await fetch('http://localhost:3001/api/articles', {
+      const res = await fetch('/api/articles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -852,7 +852,7 @@ const Admin = ({ navigate }) => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/articles/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/articles/${id}`, { method: 'DELETE' });
       if (res.ok) {
         // Update local state instantly avoiding caching issues
         setArticles(prev => prev.filter(article => article.id !== id));
@@ -972,7 +972,7 @@ const ArticleDetail = ({ navigate, id }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/articles/${id}`)
+    fetch(`/api/articles/${id}`)
       .then(res => res.json())
       .then(data => {
         setArticle(data);
