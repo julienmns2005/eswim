@@ -1048,7 +1048,17 @@ const ArticleDetail = ({ navigate, id }) => {
 // --- COMPOSANT PRINCIPAL (ROUTER & LAYOUT) ---
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return ['home', 'about', 'service', 'blog', 'contact', 'admin'].includes(hash) || hash.startsWith('article_') 
+      ? hash 
+      : 'home';
+  });
+
+  useEffect(() => {
+    window.location.hash = currentPage;
+    window.scrollTo(0, 0);
+  }, [currentPage]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Scroll to top on page change
