@@ -111,7 +111,7 @@ const Home = ({ navigate }) => (
           <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-light">
             L'analyse biomécanique vidéo et le plan d'entraînement sur-mesure pour exploser vos chronos. Arrêtez de nager plus pour stagner, corrigez ce qui vous freine vraiment.
           </p>
-          <div className="flex flex-col sm:flex-row gap-5">
+          <div className="flex flex-col sm:flex-row gap-5 mt-4">
             <Button onClick={() => navigate('contact')} className="text-lg px-8 py-4">
               Commencer mon analyse
             </Button>
@@ -233,7 +233,7 @@ const Home = ({ navigate }) => (
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <h3 className="text-3xl font-bold mb-6 relative z-10">Prêt à améliorer votre nage ?</h3>
           <p className="text-slate-300 mb-10 text-sm relative z-10">Prenons quelques minutes pour faire le point sur votre niveau actuel, vos objectifs et les leviers concrets à activer. Vous repartez avec une vision claire de la meilleure stratégie pour progresser rapidement et durablement.</p>
-          <Button onClick={() => navigate('contact')} className="w-full sm:w-auto text-lg px-10 py-4 relative z-10">
+          <Button onClick={() => navigate('contact')} className="w-full sm:w-auto text-lg px-10 py-4 relative z-10 mt-8">
             Parlons-en
           </Button>
         </div>
@@ -304,7 +304,7 @@ const Home = ({ navigate }) => (
           <p className="text-slate-300 mb-8 leading-relaxed relative z-10">
             Mon approche n'est pas basée sur des conseils génériques de bord de bassin. En tant que compétiteur (médaillé aux championnats Francophones et Wallons), je sais ce que l'exigence du chronomètre implique. Je décortique ce que l'œil nu ne peut pas voir pour vous apporter des solutions qui fonctionnent réellement.
           </p>
-          <Button variant="outlineDark" onClick={() => navigate('about')} className="w-full sm:w-auto relative z-10">
+          <Button variant="outlineDark" onClick={() => navigate('about')} className="w-full sm:w-auto relative z-10 mt-8">
             Découvrir mon palmarès et parcours
           </Button>
         </div>
@@ -346,7 +346,7 @@ const Home = ({ navigate }) => (
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold mb-6">Votre progression ne dépend pas seulement de ce que vous nagez. <br />Elle dépend surtout de <em>comment</em> vous nagez.</h2>
         <p className="text-blue-100 text-xl mb-10">Réservez votre appel découverte gratuit aujourd'hui.</p>
-        <Button onClick={() => navigate('contact')} className="bg-slate-900 text-white hover:bg-slate-800 text-lg px-10 py-4">
+        <Button onClick={() => navigate('contact')} className="bg-slate-900 text-white hover:bg-slate-800 text-lg px-10 py-4 mt-8">
           Démarrer sans engagement
         </Button>
       </div>
@@ -545,7 +545,7 @@ const Service = ({ navigate }) => (
               <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-500" /> Ligne directe WhatsApp</li>
             </ul>
 
-            <Button onClick={() => navigate('contact')} variant="accent" className="w-full mb-4 text-slate-950 font-bold">Parlons-en</Button>
+            <Button onClick={() => navigate('contact')} variant="accent" className="w-full mb-4 text-slate-950 font-bold mt-8">Parlons-en</Button>
             <p className="text-sm font-medium text-center text-slate-500 mt-4">L'objectif est simple : vous aider à gagner en vitesse, en aisance et en régularité, avec un accompagnement clair, humain et structuré.</p>
           </div>
         </div>
@@ -614,7 +614,7 @@ const Blog = ({ navigate }) => {
 
         <div className="bg-blue-600 rounded-2xl p-8 text-center text-white max-w-4xl mx-auto">
           <h3 className="text-2xl font-bold mb-4">Prêt à passer de la théorie à la pratique ?</h3>
-          <Button variant="outlineDark" onClick={() => navigate('contact')}>Réserver une analyse personnalisée</Button>
+          <Button variant="outlineDark" onClick={() => navigate('contact')} className="mt-8">Réserver une analyse personnalisée</Button>
         </div>
       </div>
     </div>
@@ -708,7 +708,7 @@ const Contact = ({ navigate }) => {
                   </div>
 
                   <div className="pt-4">
-                    <Button type="submit" className="w-full text-lg py-4 flex items-center justify-center gap-2">
+                    <Button type="submit" className="w-full text-lg py-4 flex items-center justify-center gap-2 mt-8">
                       {loading ? "Chargement en cours..." : "Suivant : Choisir mon créneau visio"} {!loading && <ArrowRight className="w-5 h-5" />}
                     </Button>
                     <p className="text-center text-xs text-slate-400 mt-4 flex items-center justify-center gap-1">
@@ -878,7 +878,7 @@ const Admin = ({ navigate }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type="submit" className="w-full">Se connecter</Button>
+            <Button type="submit" className="w-full mt-8">Se connecter</Button>
           </form>
         </div>
       </div>
@@ -928,7 +928,7 @@ const Admin = ({ navigate }) => {
           </div>
         )}
 
-        <Button type="submit" className="w-full text-lg py-4">Publier l'article</Button>
+        <Button type="submit" className="w-full text-lg py-4 mt-8">Publier l'article</Button>
       </form>
 
       <div className="mt-16">
