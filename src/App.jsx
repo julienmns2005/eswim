@@ -173,7 +173,7 @@ const Home = ({ navigate }) => (
                 "Observation fine du geste au ralenti",
                 "Identification des freins moteurs invisibles à l'œil nu",
                 "Correction individualisée basée sur la biomécanique",
-                "Plan d'action concret et progressif sur 4 semaines"
+                "Plan d'action concret et progressif sur 6 semaines"
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-cyan-500 shrink-0 mt-0.5" />
