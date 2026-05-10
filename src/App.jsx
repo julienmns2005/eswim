@@ -1116,13 +1116,15 @@ export default function App() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <Button
-              onClick={() => setCurrentPage('contact')}
-              variant="primary"
-              className="hidden lg:flex text-sm py-2.5 px-5"
-            >
-              Réserver mon analyse
-            </Button>
+            <div className="hidden lg:block">
+              <Button
+                onClick={() => setCurrentPage('contact')}
+                variant="primary"
+                className="text-sm py-2.5 px-5"
+              >
+                Réserver mon analyse
+              </Button>
+            </div>
 
             <button
               className="md:hidden p-2 text-white rounded-lg border border-slate-700 bg-slate-900/60"
