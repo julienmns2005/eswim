@@ -86,7 +86,7 @@ const PressCard = ({ date, title, description, badge, image, source }) => (
 );
 
 const EswimLogo = ({ className = "w-10 h-10" }) => (
-  <img src="/logo.png" alt="Eswim Logo" className={`object-contain rounded-lg ${className}`} />
+  <img src="/Logo.png" alt="Eswim Logo" className={`object-contain rounded-lg ${className}`} />
 );
 
 // --- PAGES ---
