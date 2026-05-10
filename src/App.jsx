@@ -102,9 +102,6 @@ const Home = ({ navigate }) => (
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 animate-fade-in">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-8 backdrop-blur-sm">
-            <Activity className="w-4 h-4" /> Analyse Biomécanique Premium
-          </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight md:leading-[1.1] mb-8 tracking-tight">
             Nagez plus vite. <br className="hidden md:block" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Fatiguez-vous moins.</span>
           </h1>
@@ -830,7 +827,7 @@ const Admin = ({ navigate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setPublishStatus({ type: 'loading', text: editingArticleId ? 'Modification en cours...' : 'Publication en cours...' });
-    
+
     const url = editingArticleId ? `/api/articles/${editingArticleId}` : '/api/articles';
     const method = editingArticleId ? 'PUT' : 'POST';
 
@@ -1050,8 +1047,8 @@ const ArticleDetail = ({ navigate, id }) => {
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash.replace('#', '');
-    return ['home', 'about', 'service', 'blog', 'contact', 'admin'].includes(hash) || hash.startsWith('article_') 
-      ? hash 
+    return ['home', 'about', 'service', 'blog', 'contact', 'admin'].includes(hash) || hash.startsWith('article_')
+      ? hash
       : 'home';
   });
 
@@ -1147,23 +1144,23 @@ export default function App() {
             />
             <div className="md:hidden fixed top-20 left-0 right-0 z-50 bg-slate-950 border-b border-slate-800 p-4 animate-fade-in shadow-2xl text-white max-h-[calc(100vh-5rem)] overflow-y-auto">
               <div className="flex flex-col space-y-3">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => setCurrentPage(link.id)}
-                  className={`text-left text-base font-semibold px-3 py-3 rounded-lg transition-colors ${currentPage === link.id ? 'text-slate-950 bg-cyan-400' : 'text-slate-100 bg-slate-900 hover:bg-slate-800'
-                    }`}
+                {navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => setCurrentPage(link.id)}
+                    className={`text-left text-base font-semibold px-3 py-3 rounded-lg transition-colors ${currentPage === link.id ? 'text-slate-950 bg-cyan-400' : 'text-slate-100 bg-slate-900 hover:bg-slate-800'
+                      }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <Button
+                  onClick={() => setCurrentPage('contact')}
+                  className="w-full mt-3 py-3"
                 >
-                  {link.label}
-                </button>
-              ))}
-              <Button
-                onClick={() => setCurrentPage('contact')}
-                className="w-full mt-3 py-3"
-              >
-                Parlons-en
-              </Button>
-            </div>
+                  Parlons-en
+                </Button>
+              </div>
             </div>
           </>
         )}
