@@ -86,16 +86,7 @@ const PressCard = ({ date, title, description, badge, image, source }) => (
 );
 
 const EswimLogo = ({ className = "w-10 h-10" }) => (
-  <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <mask id="swooshMask">
-        <rect x="0" y="0" width="100" height="100" fill="white" />
-        <path d="M 2 48 C 20 37, 45 41, 54 44.5 A 8.5 8.5 0 1 1 54 55.5 C 45 55, 25 56, 2 48 Z" fill="black" stroke="black" stroke-width="5" stroke-linejoin="round" />
-      </mask>
-    </defs>
-    <path d="M 30 15 L 70 15 A 12.5 12.5 0 0 1 70 40 L 50 40 L 50 60 L 70 60 A 12.5 12.5 0 0 1 70 85 L 30 85 A 5 5 0 0 1 25 80 L 25 20 A 5 5 0 0 1 30 15 Z" fill="currentColor" mask="url(#swooshMask)" />
-    <path d="M 2 48 C 20 37, 45 41, 54 44.5 A 8.5 8.5 0 1 1 54 55.5 C 45 55, 25 56, 2 48 Z" fill="currentColor" />
-  </svg>
+  <img src="/logo.png" alt="Eswim Logo" className={`object-contain rounded-lg ${className}`} />
 );
 
 // --- PAGES ---
