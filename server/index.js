@@ -80,6 +80,31 @@ app.post('/api/articles', (req, res) => {
   });
 });
 
+// Modifier un article
+app.put('/api/articles/:id', (req, res) => {
+  const { id } = req.params;
+  const { title, category, image, content } = req.body;
+  
+  if (!title || !category || !content) {
+    return res.status(400).json({ error: "Le titre, la catégorie et le contenu sont requis." });
+  }
+
+  const stmt = db.prepare('UPDATE articles SET title = ?, category = ?, image = ?, content = ? WHERE id = ?');
+  stmt.run([title, category, image, content, id], function(err) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    if (this.changes === 0) {
+      res.status(404).json({ error: "Article non trouvé." });
+      return;
+    }
+    db.get('SELECT * FROM articles WHERE id = ?', [id], (err, row) => {
+      res.json(row);
+    });
+  });
+});
+
 // Supprimer un article (optionnel mais utile pour l'admin)
 app.delete('/api/articles/:id', (req, res) => {
   const { id } = req.params;

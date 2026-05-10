@@ -3,7 +3,7 @@ import Cal, { getCalApi } from "@calcom/embed-react";
 import {
   Menu, X, ChevronDown, CheckCircle, ArrowRight, Video, FileText,
   Calendar, Activity, Droplets, Target, User, Mail, Camera,
-  Award, Clock, ShieldCheck, ChevronRight, Trophy, Newspaper, Trash2
+  Award, Clock, ShieldCheck, ChevronRight, Trophy, Newspaper, Trash2, Edit
 } from 'lucide-react';
 
 // --- COMPOSANTS REUTILISABLES ---
@@ -807,6 +807,7 @@ const Admin = ({ navigate }) => {
   const [articles, setArticles] = useState([]);
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [publishStatus, setPublishStatus] = useState(null);
+  const [editingArticleId, setEditingArticleId] = useState(null);
 
   const fetchArticles = () => {
     // Adding a timestamp ensures the browser doesn't cache the API response!
@@ -828,26 +829,43 @@ const Admin = ({ navigate }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setPublishStatus({ type: 'loading', text: 'Publication en cours...' });
+    setPublishStatus({ type: 'loading', text: editingArticleId ? 'Modification en cours...' : 'Publication en cours...' });
+    
+    const url = editingArticleId ? `/api/articles/${editingArticleId}` : '/api/articles';
+    const method = editingArticleId ? 'PUT' : 'POST';
+
     try {
-      const res = await fetch('/api/articles', {
-        method: 'POST',
+      const res = await fetch(url, {
+        method: method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
       if (res.ok) {
-        setPublishStatus({ type: 'success', text: 'Article publié avec succès !' });
+        setPublishStatus({ type: 'success', text: editingArticleId ? 'Article modifié avec succès !' : 'Article publié avec succès !' });
         setFormData({ title: '', category: 'Entraînement', image: '', content: '' });
+        setEditingArticleId(null);
         fetchArticles();
         setTimeout(() => setPublishStatus(null), 4000);
       } else {
-        setPublishStatus({ type: 'error', text: 'Erreur lors de la publication.' });
+        setPublishStatus({ type: 'error', text: 'Erreur lors de la sauvegarde.' });
         setTimeout(() => setPublishStatus(null), 4000);
       }
     } catch (err) {
       setPublishStatus({ type: 'error', text: 'Serveur indisponible.' });
       setTimeout(() => setPublishStatus(null), 4000);
     }
+  };
+
+  const handleEdit = (article) => {
+    setEditingArticleId(article.id);
+    setFormData({
+      title: article.title,
+      category: article.category,
+      image: article.image || '',
+      content: article.content
+    });
+    // Scroll to top to see the form
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDelete = async (id) => {
@@ -887,7 +905,7 @@ const Admin = ({ navigate }) => {
 
   return (
     <div className="animate-fade-in pt-32 pb-20 max-w-4xl mx-auto px-6">
-      <SectionHeading title="Créer un nouvel article" subtitle="Espace Admin" />
+      <SectionHeading title={editingArticleId ? "Modifier l'article" : "Créer un nouvel article"} subtitle="Espace Admin" />
       <div className="flex justify-end mb-4">
         <Button variant="secondary" onClick={() => navigate('blog')}>← Voir le Blog</Button>
       </div>
@@ -928,7 +946,17 @@ const Admin = ({ navigate }) => {
           </div>
         )}
 
-        <Button type="submit" className="w-full text-lg py-4 mt-8">Publier l'article</Button>
+        <div className="flex flex-col sm:flex-row gap-4 mt-8">
+          {editingArticleId && (
+            <Button type="button" variant="outline" onClick={() => {
+              setEditingArticleId(null);
+              setFormData({ title: '', category: 'Entraînement', image: '', content: '' });
+            }} className="w-full sm:w-1/3 text-lg py-4">Annuler</Button>
+          )}
+          <Button type="submit" className={`w-full ${editingArticleId ? 'sm:w-2/3' : ''} text-lg py-4`}>
+            {editingArticleId ? "Enregistrer les modifications" : "Publier l'article"}
+          </Button>
+        </div>
       </form>
 
       <div className="mt-16">
@@ -952,9 +980,14 @@ const Admin = ({ navigate }) => {
                         <button type="button" onClick={() => setConfirmDelete(null)} className="px-3 py-1 bg-white text-slate-600 text-xs font-bold rounded shadow-sm border border-slate-200 hover:bg-slate-50 transition-colors">Non</button>
                       </div>
                     ) : (
-                      <button type="button" onClick={() => setConfirmDelete(article.id)} className="text-red-500 hover:text-red-700 font-medium text-sm flex items-center px-4 py-2 rounded-lg hover:bg-red-50 transition-colors">
-                        <Trash2 className="w-4 h-4 mr-2" /> Supprimer
-                      </button>
+                      <div className="flex gap-2">
+                        <button onClick={() => handleEdit(article)} className="p-2 text-blue-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Modifier l'article">
+                          <Edit className="w-5 h-5" />
+                        </button>
+                        <button onClick={() => setConfirmDelete(article.id)} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Supprimer l'article">
+                          <Trash2 className="w-5 h-5" />
+                        </button>
+                      </div>
                     )}
                   </div>
                 </li>
