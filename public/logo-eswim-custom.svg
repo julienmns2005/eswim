@@ -6,6 +6,6 @@
     </mask>
   </defs>
 
-  <path d="M 35 10 L 65 10 A 15 15 0 0 1 65 40 L 44 40 L 44 60 L 65 60 A 15 15 0 0 1 65 90 L 35 90 A 15 15 0 0 1 20 75 L 20 25 A 15 15 0 0 1 35 10 Z" fill="currentColor" mask="url(#swooshMask)" />
-  <path d="M 5 52 C 20 38, 40 42, 52 44 A 9 9 0 1 1 52 56 C 40 58, 20 62, 5 52 Z" fill="currentColor" />
+  <path d="M 35 10 L 65 10 A 15 15 0 0 1 65 40 L 44 40 L 44 60 L 65 60 A 15 15 0 0 1 65 90 L 35 90 A 15 15 0 0 1 20 75 L 20 25 A 15 15 0 0 1 35 10 Z" fill="#0ea5e9" mask="url(#swooshMask)" />
+  <path d="M 5 52 C 20 38, 40 42, 52 44 A 9 9 0 1 1 52 56 C 40 58, 20 62, 5 52 Z" fill="#0ea5e9" />
 </svg>
